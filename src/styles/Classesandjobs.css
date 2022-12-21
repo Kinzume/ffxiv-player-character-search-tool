@@ -1,5 +1,6 @@
 .cjs {
   width: 15rem;
+  height: fit-content;
   display: flex;
   flex-wrap: wrap;
   gap: 0 5px;

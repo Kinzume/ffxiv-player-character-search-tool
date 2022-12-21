@@ -1,0 +1,61 @@
+{
+  "Pagination": {
+    "Page": 1,
+    "PageNext": null,
+    "PagePrev": null,
+    "PageTotal": 1,
+    "Results": 8,
+    "ResultsPerPage": 100,
+    "ResultsTotal": 8
+  },
+  "Results": [
+    {
+      "ID": 1,
+      "Icon": null,
+      "Name": "Hyur",
+      "Url": "/Race/1"
+    },
+    {
+      "ID": 2,
+      "Icon": null,
+      "Name": "Elezen",
+      "Url": "/Race/2"
+    },
+    {
+      "ID": 3,
+      "Icon": null,
+      "Name": "Lalafell",
+      "Url": "/Race/3"
+    },
+    {
+      "ID": 4,
+      "Icon": null,
+      "Name": "Miqo'te",
+      "Url": "/Race/4"
+    },
+    {
+      "ID": 5,
+      "Icon": null,
+      "Name": "Roegadyn",
+      "Url": "/Race/5"
+    },
+    {
+      "ID": 6,
+      "Icon": null,
+      "Name": "Au Ra",
+      "Url": "/Race/6"
+    },
+    {
+      "ID": 7,
+      "Icon": null,
+      "Name": "Hrothgar",
+      "Url": "/Race/7"
+    },
+    {
+      "ID": 8,
+      "Icon": null,
+      "Name": "Viera",
+      "Url": "/Race/8"
+    }
+  ]
+}

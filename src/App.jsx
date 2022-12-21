@@ -1,10 +1,10 @@
 import { useState } from "react";
 import "./styles/App.css";
 import Character from "./components/Character";
-import dataMock from "./data";
+import ExampleData from "./data/ExampleData.json";
 
 function App() {
-  const [data, setData] = useState(dataMock);
+  const [data, setData] = useState(ExampleData);
 
   return (
     <div className="App">
