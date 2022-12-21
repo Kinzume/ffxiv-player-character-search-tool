@@ -1,0 +1,26 @@
+.profileinfo {
+  display: flex;
+  flex-direction: column;
+  height: fit-content;
+  margin: auto 0;
+  padding-bottom: 10rem;
+  gap: 1rem 0;
+}
+
+.profileinfo article h3 {
+  font-size: 0.8rem;
+}
+
+.profileinfo article p {
+  font-size: 1.5rem;
+}
+.profileinfo article a {
+  font-size: 1.5rem;
+  color: grey;
+}
+
+.nameday-guardian {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem 0;
+}

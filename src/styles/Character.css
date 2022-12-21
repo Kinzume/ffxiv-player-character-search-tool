@@ -1,8 +1,11 @@
 .character {
   margin: 0 auto;
   width: fit-content;
+  display: flex;
+  gap: 0 4rem;
 }
-.character > h1 {
+
+.character h2 {
   width: fit-content;
   margin: 0 auto;
   font-size: 2rem;

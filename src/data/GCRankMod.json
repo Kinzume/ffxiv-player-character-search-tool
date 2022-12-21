@@ -1,0 +1,184 @@
+{
+  "Pagination": {
+    "Page": 1,
+    "PageNext": null,
+    "PagePrev": null,
+    "PageTotal": 1,
+    "Results": 19,
+    "ResultsPerPage": 100,
+    "ResultsTotal": 19
+  },
+  "Results": [
+    {
+      "ID": 1,
+      "Icon": null,
+      "Name": null,
+      "Storm": "Storm Private Third Class",
+      "Serpent": "Serpent Private Third Class",
+      "Flame": "Flame Private Third Class",
+      "Url": "/GrandCompanyRank/1"
+    },
+    {
+      "ID": 2,
+      "Icon": null,
+      "Name": null,
+      "Storm": "Storm Private Second Class",
+      "Serpent": "Serpent Private Second Class",
+      "Flame": "Flame Private Second Class",
+      "Url": "/GrandCompanyRank/2"
+    },
+    {
+      "ID": 3,
+      "Icon": null,
+      "Name": null,
+      "Storm": "Storm Private First Class",
+      "Serpent": "Serpent Private First Class",
+      "Flame": "Flame Private First Class",
+      "Url": "/GrandCompanyRank/3"
+    },
+    {
+      "ID": 4,
+      "Icon": null,
+      "Name": null,
+      "Storm": "Storm Corporal",
+      "Serpent": "Serpent Corporal",
+      "Flame": "Flame Corporal",
+      "Url": "/GrandCompanyRank/4"
+    },
+    {
+      "ID": 5,
+      "Icon": null,
+      "Name": null,
+      "Storm": "Storm Sergeant Third Class",
+      "Serpent": "Serpent Sergeant Third Class",
+      "Flame": "Flame Sergeant Third Class",
+      "Url": "/GrandCompanyRank/5"
+    },
+    {
+      "ID": 6,
+      "Icon": null,
+      "Name": null,
+      "Storm": "Storm Sergeant Second Class",
+      "Serpent": "Serpent Sergeant Second Class",
+      "Flame": "Flame Sergeant Second Class",
+      "Url": "/GrandCompanyRank/6"
+    },
+    {
+      "ID": 7,
+      "Icon": null,
+      "Name": null,
+      "Storm": "Storm Sergeant First Class",
+      "Serpent": "Serpent Sergeant First Class",
+      "Flame": "Flame Sergeant First Class",
+      "Url": "/GrandCompanyRank/7"
+    },
+    {
+      "ID": 8,
+      "Icon": null,
+      "Name": null,
+      "Storm": "Chief Storm Sergeant",
+      "Serpent": "Chief Serpent Sergeant",
+      "Flame": "Chief Flame Sergeant",
+      "Url": "/GrandCompanyRank/8"
+    },
+    {
+      "ID": 9,
+      "Icon": null,
+      "Name": null,
+      "Storm": "Second Storm Lieutenant",
+      "Serpent": "Second Serpent Lieutenant",
+      "Flame": "Second Flame Lieutenant",
+      "Url": "/GrandCompanyRank/9"
+    },
+    {
+      "ID": 10,
+      "Icon": null,
+      "Name": null,
+      "Storm": "First Storm Lieutenant",
+      "Serpent": "First Serpent Lieutenant",
+      "Flame": "First Flame Lieutenant",
+      "Url": "/GrandCompanyRank/10"
+    },
+    {
+      "ID": 11,
+      "Icon": null,
+      "Name": null,
+      "Storm": "Storm Captain",
+      "Serpent": "Serpent Captain",
+      "Flame": "Flame Captain",
+      "Url": "/GrandCompanyRank/11"
+    },
+    {
+      "ID": 12,
+      "Icon": null,
+      "Name": null,
+      "Storm": "Second Storm Commander",
+      "Serpent": "Second Serpent Commander",
+      "Flame": "Second Flame Commander",
+      "Url": "/GrandCompanyRank/12"
+    },
+    {
+      "ID": 13,
+      "Icon": null,
+      "Name": null,
+      "Storm": "First Storm Commander",
+      "Serpent": "First Serpent Commander",
+      "Flame": "First Flame Commander",
+      "Url": "/GrandCompanyRank/13"
+    },
+    {
+      "ID": 14,
+      "Icon": null,
+      "Name": null,
+      "Storm": "High Storm Commander",
+      "Serpent": "High Serpent Commander",
+      "Flame": "High Flame Commander",
+      "Url": "/GrandCompanyRank/14"
+    },
+    {
+      "ID": 15,
+      "Icon": null,
+      "Name": null,
+      "Storm": "Rear Storm Marshal",
+      "Serpent": "Rear Serpent Marshal",
+      "Flame": "Rear Flame Marshal",
+      "Url": "/GrandCompanyRank/15"
+    },
+    {
+      "ID": 16,
+      "Icon": null,
+      "Name": null,
+      "Storm": "Vice Storm Marshal",
+      "Serpent": "Vice Serpent Marshal",
+      "Flame": "Vice Flame Marshal",
+      "Url": "/GrandCompanyRank/16"
+    },
+    {
+      "ID": 17,
+      "Icon": null,
+      "Name": null,
+      "Storm": "Storm Marshal",
+      "Serpent": "Serpent Marshal",
+      "Flame": "Flame Marshal",
+      "Url": "/GrandCompanyRank/17"
+    },
+    {
+      "ID": 18,
+      "Icon": null,
+      "Name": null,
+      "Storm": "Grand Storm Marshal",
+      "Serpent": "Grand Serpent Marshal",
+      "Flame": "Grand Flame Marshal",
+      "Url": "/GrandCompanyRank/18"
+    },
+    {
+      "ID": 19,
+      "Icon": null,
+      "Name": null,
+      "Storm": "Storm Champion",
+      "Serpent": "Serpent Champion",
+      "Flame": "Flame Champion",
+      "Url": "/GrandCompanyRank/19"
+    }
+  ]
+}
