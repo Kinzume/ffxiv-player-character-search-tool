@@ -3,15 +3,22 @@
   width: fit-content;
   display: flex;
   gap: 0 4rem;
+  height: 100vh;
+  align-items: center;
 }
 
-.character h2 {
-  width: fit-content;
+.name-title {
+  width: 100%;
   margin: 0 auto;
+  text-align: center;
+  margin: 1rem 0;
+}
+.name-title h2 {
   font-size: 2rem;
+  height: 2.5rem;
 }
 
 .portrait {
-  border-radius: 10px;
+  border-radius: 0.8rem;
   width: 20rem;
 }

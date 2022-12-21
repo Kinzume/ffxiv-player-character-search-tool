@@ -13,24 +13,13 @@ export default function Classesandjobs({ data }) {
             className="cj"
           >
             <img
-              title={job?.Name}
+              width="24px"
+              height="24px"
               className="icon"
-              style={{
-                backgroundColor:
-                  index <= 3
-                    ? "#3c50af"
-                    : index > 3 && index <= 7
-                    ? "#427234"
-                    : index > 7 && index <= 19
-                    ? "#813b3c"
-                    : index > 19 && index <= 27
-                    ? "#6d4db7"
-                    : "#b89a40",
-              }}
               src={
                 cj === "bluemage(limitedjob)"
-                  ? "https://xivapi.com/cj/1/bluemage.png"
-                  : `https://xivapi.com/cj/1/${cj}.png`
+                  ? "https://xivapi.com/cj/companion/bluemage.png"
+                  : `https://xivapi.com/cj/companion/${cj}.png`
               }
               alt={cj}
             />

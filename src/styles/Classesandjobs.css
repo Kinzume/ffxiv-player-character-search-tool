@@ -3,25 +3,17 @@
   height: fit-content;
   display: flex;
   flex-wrap: wrap;
-  gap: 0 5px;
+  gap: 0 0.4rem;
   margin: 0 auto;
 }
 .cj {
   display: flex;
-  gap: 0 10px;
+  gap: 0 0.8rem;
   flex-direction: column;
   align-items: center;
   width: fit-content;
 }
 
 .icon {
-  /* 
-      tank: #3c50af
-      healer: #427234
-      dps: #813b3c
-      doh: #6d4db7
-      dol: #b89a40
-       */
   width: 1.5rem;
-  border-radius: 3px;
 }
