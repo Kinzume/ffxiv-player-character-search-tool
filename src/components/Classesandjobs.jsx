@@ -18,8 +18,8 @@ export default function Classesandjobs({ data }) {
               className="icon"
               src={
                 cj === "bluemage(limitedjob)"
-                  ? "https://xivapi.com/cj/companion/bluemage.png"
-                  : `https://xivapi.com/cj/companion/${cj}.png`
+                  ? "src/assets/bluemage.png"
+                  : `src/assets/${cj}.png`
               }
               alt={cj}
             />
