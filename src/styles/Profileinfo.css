@@ -15,6 +15,12 @@
 .profileinfo article p {
   font-size: 1.5rem;
 }
+.race-clan-gender {
+  display: flex;
+  font-size: 1.5rem;
+  padding-right: 35%;
+  justify-content: space-between;
+}
 .profileinfo article a {
   font-size: 1.5rem;
   color: grey;
@@ -24,4 +30,11 @@
   display: flex;
   flex-direction: column;
   gap: 0.5rem 0;
+}
+
+.grand-company {
+  display: flex;
+  font-size: 1.5rem;
+  padding-right: 15%;
+  justify-content: space-between;
 }
