@@ -3,11 +3,11 @@ import { useEffect, useState } from "react";
 export default function useCharSearch(query, pageNumber) {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
-  const [books, setBooks] = useState([]);
+  const [characters, setCharacters] = useState([]);
   const [hasMore, setHasMore] = useState(false);
 
   useEffect(() => {
-    setBooks([]);
+    setCharacters([]);
   }, [query]);
 
   useEffect(() => {
@@ -28,9 +28,9 @@ export default function useCharSearch(query, pageNumber) {
       .then((response) => response.json())
       .then((result) => {
         console.log(result.Results);
-        setBooks((prevBooks) => {
+        setCharacters((prevChars) => {
           return [
-            ...new Set([...prevBooks, ...result.Results.map((b) => b.Name)]),
+            ...new Set([...prevChars, ...result.Results.map((b) => b.Name)]),
           ];
         });
         setHasMore(result.Results.length > 0);
@@ -45,5 +45,5 @@ export default function useCharSearch(query, pageNumber) {
 
     return () => controller.abort();
   }, [query, pageNumber]);
-  return { loading, error, books, hasMore };
+  return { loading, error, characters, hasMore };
 }
