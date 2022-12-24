@@ -5,7 +5,10 @@ import useCharSearch from "./useCharSearch";
 export default function Search() {
   const [query, setQuery] = useState("Leo");
   const [pageNumber, setPageNumber] = useState(1);
-  const { books, hasMore, loading, error } = useCharSearch(query, pageNumber);
+  const { characters, hasMore, loading, error } = useCharSearch(
+    query,
+    pageNumber
+  );
   const observer = useRef();
   const lastBookElementRef = useCallback(
     (node) => {
@@ -37,18 +40,18 @@ export default function Search() {
         id=""
         onChange={handleSearch}
       />
-      {books?.map((book, index) => {
-        if (books.length === index + 1) {
+      {characters?.map((character, index) => {
+        if (characters.length === index + 1) {
           return (
             <div
               ref={lastBookElementRef}
-              key={book}
+              key={character}
             >
-              {book}
+              {character}
             </div>
           );
         } else {
-          return <div key={book}>{book}</div>;
+          return <div key={character}>{character}</div>;
         }
       })}
       <div>{loading && "Loading..."}</div>
