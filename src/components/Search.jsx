@@ -23,6 +23,7 @@ import { Avatar, InputAdornment, Pagination, TextField } from "@mui/material";
 import { styled, alpha } from "@mui/material/styles";
 import InputBase from "@mui/material/InputBase";
 import { Container } from "@mui/system";
+import SpeedDial from "@mui/material/SpeedDial";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return (
@@ -57,12 +58,12 @@ export default function Search() {
   };
   return (
     <div>
-      <Button
-        variant="outlined"
+      <SpeedDial
+        ariaLabel="Search Player"
+        sx={{ position: "absolute", bottom: 16, right: 16 }}
+        icon={<SearchIcon />}
         onClick={handleClickOpen}
-      >
-        Search Player
-      </Button>
+      ></SpeedDial>
       <Dialog
         fullScreen
         open={open}
