@@ -6,7 +6,6 @@ import SearchData2 from "../data/SearchData2.json";
 import SearchData3 from "../data/SearchData3.json";
 import SearchData4 from "../data/SearchData4.json";
 import SearchData5 from "../data/SearchData5.json";
-import Button from "@mui/material/Button";
 import Dialog from "@mui/material/Dialog";
 import ListItemText from "@mui/material/ListItemText";
 import ListItem from "@mui/material/ListItem";
@@ -15,15 +14,14 @@ import Divider from "@mui/material/Divider";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
-import Typography from "@mui/material/Typography";
 import CloseIcon from "@mui/icons-material/Close";
 import Slide from "@mui/material/Slide";
 import SearchIcon from "@mui/icons-material/Search";
 import { Avatar, InputAdornment, Pagination, TextField } from "@mui/material";
 import { styled, alpha } from "@mui/material/styles";
-import InputBase from "@mui/material/InputBase";
 import { Container } from "@mui/system";
 import SpeedDial from "@mui/material/SpeedDial";
+import SearchField from "./SearchField";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return (
@@ -42,20 +40,41 @@ const SearchDataArr = [
   SearchData5,
 ];
 export default function Search() {
-  const [query, setQuery] = useState("Leo");
   const [open, setOpen] = useState(false);
   const [page, setPage] = useState(SearchDataArr[0]);
 
   const handleClickOpen = () => {
     setOpen(true);
   };
-
   const handleClose = () => {
     setOpen(false);
   };
-  const handleChange = (event, page) => {
+
+  const handlePageChange = (event, page) => {
     setPage(SearchDataArr[page - 1]);
   };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    return searchPlayer(e.target[0].value);
+  };
+
+  const searchPlayer = (player) => {
+    const controller = new AbortController();
+    const signal = controller.signal;
+    const requestOptions = {
+      method: "GET",
+      redirect: "follow",
+      signal: signal,
+    };
+    fetch(
+      `https://xivapi.com/character/search?name=${player}&page=1`,
+      requestOptions
+    )
+      .then((response) => response.json())
+      .then((result) => console.log(result.Results));
+  };
+
   return (
     <div>
       <SpeedDial
@@ -80,57 +99,14 @@ export default function Search() {
               <CloseIcon />
             </IconButton>
             <Container>
-              <TextField
-                fullWidth
-                id="standard-basic"
-                label="Search Player"
-                variant="standard"
-                InputProps={{
-                  startAdornment: (
-                    <InputAdornment position="start">
-                      <SearchIcon
-                        sx={[
-                          {
-                            color: alpha("#FFFFFF", 0.7),
-                          },
-                        ]}
-                      />
-                    </InputAdornment>
-                  ),
-                }}
-                sx={[
-                  {
-                    m: 1,
-                    "& .MuiInput-root": {
-                      p: 1,
-                    },
-                    "& .MuiInput-input": {
-                      color: alpha("#FFFFFF", 0.9),
-                    },
-                    backgroundColor: alpha("#FFFFFF", 0.15),
-                    "&:hover": {
-                      backgroundColor: alpha("#FFFFFF", 0.25),
-                    },
-                    "& label": {
-                      color: alpha("#FFFFFF", 0.5),
-                      p: 1,
-                    },
-                    "& label.Mui-focused": {
-                      color: alpha("#FFFFFF", 0.7),
-                    },
-                    "& .MuiInput-underline:after": {
-                      borderBottomColor: alpha("#FFFFFF", 0.7),
-                    },
-                  },
-                ]}
-              />
+              <SearchField handleSubmit={handleSubmit} />
             </Container>
           </Toolbar>
           <Container>
             <Pagination
               size="large"
               count={SearchDataArr.length}
-              onChange={handleChange}
+              onChange={handlePageChange}
               sx={{
                 p: 1,
                 "& .MuiPaginationItem-root": {
@@ -146,10 +122,11 @@ export default function Search() {
 
         <Container>
           <List>
-            {page?.Results?.map((character) => (
+            {page?.Results?.map((character, index) => (
               <ListItem
                 onClick={() => console.log(character?.ID)}
                 key={character?.ID}
+                divider={index + 1 === page?.Results.length ? false : true}
               >
                 <ListItemText
                   primary={character?.Name}
@@ -168,16 +145,6 @@ export default function Search() {
   );
 
   /* <article className="search">
-      <TextField
-        id="outlined-basic"
-        label="Player Character"
-        variant="outlined"
-        value={query}
-        onChange={handleSearch}
-      />
-
-
-
        <input
         value={query}
         type="text"
@@ -216,10 +183,7 @@ export default function Search() {
 }
 
 // const [pageNumber, setPageNumber] = useState(1);
-// const { characters, hasMore, loading, error } = useCharSearch(
-//   query,
-//   pageNumber
-// );
+
 // const observer = useRef();
 // const lastBookElementRef = useCallback(
 //   (node) => {
