@@ -6,7 +6,7 @@ import useCharLookup from "./components/useCharLookup";
 import Search from "./components/Search";
 
 function App() {
-  // const [data, setData] = useState(ExampleData);
+  const [data, setData] = useState(ExampleData);
   // const { loading, error, characterData } = useCharLookup(22005589);
   // const { loading, error, characterData } = useCharLookup(25495231);
   // let loading = true;
