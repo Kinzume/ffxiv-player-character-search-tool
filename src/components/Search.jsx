@@ -1,4 +1,4 @@
-import React, { useCallback, useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import "../styles/Search.css";
 import useCharSearch from "./useCharSearch";
 import SearchData from "../data/SearchData.json";
@@ -23,6 +23,8 @@ import { Container } from "@mui/system";
 import SpeedDial from "@mui/material/SpeedDial";
 import SearchField from "./SearchField";
 import Skeleton from "@mui/material/Skeleton";
+import SearchResults from "./SearchResults";
+import SearchPagination from "./SearchPagination";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return (
@@ -42,25 +44,16 @@ const SearchDataArr = [
 ];
 export default function Search() {
   const [open, setOpen] = useState(false);
-  const [page, setPage] = useState(SearchDataArr[0]);
-
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
-  const handleClose = () => {
-    setOpen(false);
-  };
-
-  const handlePageChange = (event, page) => {
-    setPage(SearchDataArr[page - 1]);
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    return searchPlayer(e.target[0].value);
-  };
-
-  const searchPlayer = (player) => {
+  const [results, setResults] = useState(SearchDataArr[0]);
+  const [pagination, setPagination] = useState(0);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
+  const [query, setQuery] = useState("");
+  const [page, setPage] = useState(1);
+  const searchPlayer = (name, page) => {
+    if (name === "") return;
+    setError(false);
+    setLoading(true);
     const controller = new AbortController();
     const signal = controller.signal;
     const requestOptions = {
@@ -69,11 +62,30 @@ export default function Search() {
       signal: signal,
     };
     fetch(
-      `https://xivapi.com/character/search?name=${player}&page=1`,
+      `https://xivapi.com/character/search?name=${name}&page=${page}`,
       requestOptions
     )
       .then((response) => response.json())
-      .then((result) => console.log(result.Results));
+      .then((result) => {
+        console.log(result);
+        setResults(result);
+        setPagination(result.Pagination.PageTotal);
+        return setLoading(false);
+      })
+      .catch((error) => {
+        console.log("error", error);
+        return setError(true);
+      });
+  };
+  useEffect(() => {
+    searchPlayer(query, page);
+  }, [query, page]);
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+  const handleClose = () => {
+    setOpen(false);
   };
 
   return (
@@ -99,48 +111,18 @@ export default function Search() {
             >
               <CloseIcon />
             </IconButton>
-            <Container>
-              <SearchField handleSubmit={handleSubmit} />
-            </Container>
+            <SearchField setQuery={setQuery} />
           </Toolbar>
-          <Container>
-            <Pagination
-              size="large"
-              count={SearchDataArr.length}
-              onChange={handlePageChange}
-              sx={{
-                p: 1,
-                "& .MuiPaginationItem-root": {
-                  color: alpha("#FFFFFF", 1),
-                },
-                "& .MuiPagination-ul": {
-                  justifyContent: "center",
-                },
-              }}
-            />
-          </Container>
+          <SearchPagination
+            pagination={pagination}
+            setPage={setPage}
+          />
         </AppBar>
-
-        <Container>
-          <List>
-            {page?.Results?.map((character, index) => (
-              <ListItem
-                onClick={() => console.log(character?.ID)}
-                key={character?.ID}
-                divider={index + 1 === page?.Results.length ? false : true}
-              >
-                <ListItemText
-                  primary={character?.Name}
-                  secondary={character?.Server}
-                />
-                <Avatar
-                  alt={character?.Name}
-                  src={character?.Avatar}
-                />
-              </ListItem>
-            ))}
-          </List>
-        </Container>
+        <SearchResults
+          results={results}
+          loading={loading}
+          error={error}
+        />
       </Dialog>
     </div>
   );
