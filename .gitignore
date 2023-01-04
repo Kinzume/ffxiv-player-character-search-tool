@@ -12,6 +12,11 @@ dist
 dist-ssr
 *.local
 
+public
+src
+*.json
+vite.config.js
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
