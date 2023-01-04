@@ -1,12 +1,9 @@
-import {
-  Avatar,
-  Container,
-  Divider,
-  List,
-  ListItem,
-  ListItemText,
-  Skeleton,
-} from "@mui/material";
+import Avatar from "@mui/material/Avatar";
+import Container from "@mui/material/Container";
+import List from "@mui/material/List";
+import ListItem from "@mui/material/ListItem";
+import ListItemText from "@mui/material/ListItemText";
+import Skeleton from "@mui/material/Skeleton";
 import PersonIcon from "@mui/icons-material/Person";
 import React from "react";
 
