@@ -1,4 +1,4 @@
-import { styled, alpha } from "@mui/material/styles";
+import { alpha } from "@mui/material/styles";
 import SearchIcon from "@mui/icons-material/Search";
 import InputAdornment from "@mui/material/InputAdornment";
 import TextField from "@mui/material/TextField";
@@ -7,6 +7,7 @@ import { Container } from "@mui/material";
 
 export default function SearchField({ setQuery }) {
   const [playerName, setPlayerName] = useState("");
+
   const handleChange = (event) => {
     setPlayerName(event.target.value);
   };
