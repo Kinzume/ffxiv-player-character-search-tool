@@ -22,14 +22,14 @@ export default function Classesandjobs({ data, loading, error }) {
                 style={{
                   animationDelay: `${index}s`,
                 }}
-                src="src/assets/none.png"
+                src="none.png"
               />
             ) : error ? (
               <img
                 width="24px"
                 height="24px"
                 className="icon"
-                src="src/assets/none.png"
+                src="none.png"
               />
             ) : (
               <img
@@ -37,9 +37,7 @@ export default function Classesandjobs({ data, loading, error }) {
                 height="24px"
                 className="icon"
                 src={
-                  cj === "bluemage(limitedjob)"
-                    ? "src/assets/bluemage.png"
-                    : `src/assets/${cj}.png`
+                  cj === "bluemage(limitedjob)" ? "bluemage.png" : `${cj}.png`
                 }
                 alt={cj}
               />
