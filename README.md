@@ -6,6 +6,6 @@ This website allows users to search and view player character profiles from the 
 
 ## Visuals
 
-![Profile Interface](public\XIV-API-Player-Character-Search-desktop.png)
+![Profile Interface](public/XIV-API-Player-Character-Search-desktop.png)
 
-![Search Interface](public\XIV-API-Player-Character-Search-desktop-2.png)
+![Search Interface](public/XIV-API-Player-Character-Search-desktop-2.png)
