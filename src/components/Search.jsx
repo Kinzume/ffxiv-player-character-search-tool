@@ -10,6 +10,9 @@ import SearchField from "./SearchField";
 import SearchResults from "./SearchResults";
 import SearchPagination from "./SearchPagination";
 import Button from "@mui/material/Button";
+import Container from "@mui/system/Container";
+import { useMediaQuery } from "@mui/material";
+import SearchData from "../data/SearchData.json";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return (
@@ -23,13 +26,14 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 
 export default function Search() {
   const [open, setOpen] = useState(false);
-  const [results, setResults] = useState([]);
+  const [results, setResults] = useState(SearchData);
   const [pagination, setPagination] = useState(0);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const [query, setQuery] = useState("");
   const [page, setPage] = useState(1);
 
+  const matches = useMediaQuery("(min-width: 1200px)");
   useEffect(() => {
     if (query === "") return;
     setError(false);
@@ -74,48 +78,75 @@ export default function Search() {
   return (
     <div>
       <AppBar sx={{ backgroundColor: "white", padding: "0.8rem" }}>
-        <Button
-          onClick={handleClickOpen}
-          sx={{
-            "&:hover": {
-              backgroundColor: "#1769aa",
-            },
-            backgroundColor: "#2196f3",
-            color: "white",
-            width: "fit-content",
-            marginY: "0.5rem",
-            marginX: "0.5rem",
-          }}
-        >
-          <SearchIcon sx={{ marginRight: "5px" }} />
-          Search
-        </Button>
+        <Container>
+          <Button
+            onClick={handleClickOpen}
+            sx={{
+              "&:hover": {
+                backgroundColor: "#1769aa",
+              },
+              backgroundColor: "#2196f3",
+              color: "white",
+              width: "fit-content",
+              marginY: "0.5rem",
+              marginX: "0.5rem",
+            }}
+          >
+            <SearchIcon sx={{ marginRight: "5px" }} />
+            Search
+          </Button>
+        </Container>
       </AppBar>
       <Dialog
         fullScreen
+        disableScrollLock={true}
         open={open}
         onClose={handleClose}
         TransitionComponent={Transition}
       >
+        {/* sx={} */}
+
         <AppBar sx={{ position: "sticky" }}>
-          <Toolbar>
-            <Button
-              onClick={handleClose}
-              sx={{
-                "&:hover": {
-                  backgroundColor: "#1769aa",
-                },
-                backgroundColor: "#2196f3",
-                color: "white",
-                width: "fit-content",
-                paddingInline: "1rem",
-              }}
-            >
-              <CloseIcon sx={{ marginRight: "5px" }} />
-              Close
-            </Button>
-            <SearchField setQuery={setQuery} />
+          <Toolbar
+            sx={matches ? {} : { maxWidth: "1200px", marginRight: "auto" }}
+          >
+            {matches ? (
+              <Container>
+                <Button
+                  onClick={handleClose}
+                  sx={{
+                    "&:hover": {
+                      backgroundColor: "#1769aa",
+                    },
+                    backgroundColor: "#2196f3",
+                    color: "white",
+                    width: "fit-content",
+                  }}
+                >
+                  <CloseIcon sx={{ marginRight: "5px" }} />
+                  Close
+                </Button>
+              </Container>
+            ) : (
+              <Button
+                onClick={handleClose}
+                sx={{
+                  "&:hover": {
+                    backgroundColor: "#1769aa",
+                  },
+                  backgroundColor: "#2196f3",
+                  color: "white",
+                  width: "fit-content",
+                }}
+              >
+                <CloseIcon sx={{ marginRight: "5px" }} />
+                Close
+              </Button>
+            )}
           </Toolbar>
+          <Container>
+            <SearchField setQuery={setQuery} />
+          </Container>
           <SearchPagination
             pagination={pagination}
             setPage={setPage}

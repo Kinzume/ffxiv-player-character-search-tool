@@ -1,3 +1,6 @@
+.profileimgicons {
+  padding: 1rem;
+}
 .name-title {
   width: 100%;
   margin: 0 auto;
@@ -17,4 +20,9 @@
 .dc-server {
   display: flex;
   justify-content: center;
+}
+
+@media (min-width: 1536px) {
+  .profileimgicons {
+  }
 }

@@ -4,31 +4,45 @@ import "../styles/Character.css";
 import Profileinfo from "./Profileinfo";
 import Profileimgicons from "./Profileimgicons";
 import Profilestats from "./Profilestats";
+import useMediaQuery from "@mui/material/useMediaQuery";
+import { Paper } from "@mui/material";
 
 export default function Character({ data, loading, error }) {
-  //   console.log(data?.Character?.Avatar);
-  // console.log(data?.Character?.ClassJobs);
-  //   console.log(data?.Character?.Name);
-  //   console.log(data?.Character?.Portrait);
+  const matches = useMediaQuery("@media (min-width: 1536px)");
 
   return (
     <main className="character">
       <h1 className="sr-only">Character Profile: {data?.Character?.Name}</h1>
-      <Profileinfo
-        data={data}
-        loading={loading}
-        error={error}
-      />
-      <Profileimgicons
-        data={data}
-        loading={loading}
-        error={error}
-      />
-      <Profilestats
-        data={data}
-        loading={loading}
-        error={error}
-      />
+      <Paper
+        elevation={3}
+        sx={{ order: matches ? "0" : "1" }}
+      >
+        <Profileinfo
+          data={data}
+          loading={loading}
+          error={error}
+        />
+      </Paper>
+      <Paper
+        elevation={3}
+        sx={{ order: matches ? "1" : "0" }}
+      >
+        <Profileimgicons
+          data={data}
+          loading={loading}
+          error={error}
+        />
+      </Paper>
+      <Paper
+        elevation={3}
+        sx={{ order: "2" }}
+      >
+        <Profilestats
+          data={data}
+          loading={loading}
+          error={error}
+        />
+      </Paper>
     </main>
   );
 }
