@@ -6,8 +6,15 @@ import ListItemText from "@mui/material/ListItemText";
 import Skeleton from "@mui/material/Skeleton";
 import PersonIcon from "@mui/icons-material/Person";
 import React from "react";
+import { alpha } from "@mui/material";
 
-export default function SearchResults({ results, loading, error }) {
+export default function SearchResults({
+  results,
+  loading,
+  error,
+  setId,
+  handleClose,
+}) {
   return (
     <Container>
       <List>
@@ -43,9 +50,18 @@ export default function SearchResults({ results, loading, error }) {
         ) : (
           results?.Results?.map((character, index) => (
             <ListItem
-              onClick={() => console.log(character?.ID)}
+              onClick={() => {
+                setId(character?.ID);
+                return handleClose();
+              }}
               key={character?.ID}
               divider={index + 1 === results?.Results.length ? false : true}
+              sx={{
+                "&:hover": {
+                  cursor: "pointer",
+                  backgroundColor: alpha("#808080", 0.2),
+                },
+              }}
             >
               <ListItemText
                 primary={character?.Name}

@@ -24,7 +24,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
   );
 });
 
-export default function Search() {
+export default function Search({ setId }) {
   const [open, setOpen] = useState(false);
   const [results, setResults] = useState(SearchData);
   const [pagination, setPagination] = useState(0);
@@ -156,6 +156,8 @@ export default function Search() {
           results={results}
           loading={loading}
           error={error}
+          setId={setId}
+          handleClose={handleClose}
         />
       </Dialog>
     </div>
