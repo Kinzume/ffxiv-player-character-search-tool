@@ -18,7 +18,7 @@ export default function Profileimgicons({ data, loading, error }) {
   };
 
   return (
-    <section>
+    <section className="profileimgicons">
       <div className="name-title">
         {loading ? (
           <Loader

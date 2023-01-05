@@ -1,5 +1,5 @@
 .profilestats-wrapper {
-  width: 35rem;
+  padding: 1rem;
 }
 .profilestats {
   display: flex;
@@ -22,4 +22,9 @@
   display: flex;
   justify-content: space-between;
   gap: 0 2.5rem;
+}
+
+@media (min-width: 1536px) {
+  .profilestats-wrapper {
+  }
 }

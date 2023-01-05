@@ -13,16 +13,16 @@ function App() {
   // let error = false;
   // let loading = false;
   // let error = true;
-  // let loading = false;
-  // let error = false;
+  let loading = false;
+  let error = false;
   return (
     <div className="App">
       <Search />
-      {/* <Character
+      <Character
         data={data}
         loading={loading}
         error={error}
-      /> */}
+      />
       {/* <Character
         data={characterData}
         loading={loading}
