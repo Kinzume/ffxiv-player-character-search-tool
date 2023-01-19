@@ -23,19 +23,40 @@ const Transition = React.forwardRef(function Transition(props, ref) {
     />
   );
 });
+const createUrl = (nameQuery, pageQuery) => {
+  const endpoint = "https://xivapi.com/character/search?";
+  let name, page;
+  if (nameQuery === "") {
+    name = "name=";
+  } else {
+    name = "name=" + nameQuery;
+  }
 
+  if (pageQuery === "") {
+    page = "&page=";
+  } else {
+    page = "&page=" + pageQuery;
+  }
+
+  return endpoint + name + page;
+};
+
+const initialParams = {
+  name: "Aila",
+  page: 1,
+};
 export default function Search({ setId }) {
   const [open, setOpen] = useState(false);
   const [results, setResults] = useState(SearchData);
   const [pagination, setPagination] = useState(0);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
-  const [query, setQuery] = useState("");
-  const [page, setPage] = useState(1);
+  const [noResults, setNoResults] = useState(false);
+  const [params, setParams] = useState(initialParams);
 
   const matches = useMediaQuery("(min-width: 1200px)");
   useEffect(() => {
-    if (query === "") return;
+    setNoResults(false);
     setError(false);
     setLoading(true);
     const controller = new AbortController();
@@ -45,13 +66,16 @@ export default function Search({ setId }) {
       redirect: "follow",
       signal: signal,
     };
-    fetch(
-      `https://xivapi.com/character/search?name=${query}&page=${page}`,
-      requestOptions
-    )
+    const endpoint = createUrl(params.name, params.page);
+    fetch(endpoint, requestOptions)
       .then((response) => response.json())
       .then((result) => {
         // console.log(result);
+        if (!result?.Results.length) {
+          setNoResults(true);
+          setPagination(result.Pagination.PageTotal);
+          return setLoading(false);
+        }
         setResults(result);
         setPagination(result.Pagination.PageTotal);
         return setLoading(false);
@@ -66,7 +90,7 @@ export default function Search({ setId }) {
       controller.abort();
       // console.log("Download aborted");
     };
-  }, [query, page]);
+  }, [params]);
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -145,15 +169,20 @@ export default function Search({ setId }) {
             )}
           </Toolbar>
           <Container>
-            <SearchField setQuery={setQuery} />
+            <SearchField
+              params={params}
+              setParams={setParams}
+            />
           </Container>
           <SearchPagination
+            params={params}
+            setParams={setParams}
             pagination={pagination}
-            setPage={setPage}
           />
         </AppBar>
         <SearchResults
           results={results}
+          noResults={noResults}
           loading={loading}
           error={error}
           setId={setId}

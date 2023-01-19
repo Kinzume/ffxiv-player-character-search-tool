@@ -10,6 +10,7 @@ import { alpha } from "@mui/material";
 
 export default function SearchResults({
   results,
+  noResults,
   loading,
   error,
   setId,
@@ -46,6 +47,10 @@ export default function SearchResults({
             <Avatar alt={""}>
               <PersonIcon />
             </Avatar>
+          </ListItem>
+        ) : noResults ? (
+          <ListItem divider>
+            <ListItemText primary={"No results, please try again"} />
           </ListItem>
         ) : (
           results?.Results?.map((character, index) => (

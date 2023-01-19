@@ -4,16 +4,16 @@ import InputAdornment from "@mui/material/InputAdornment";
 import TextField from "@mui/material/TextField";
 import React, { useState } from "react";
 
-export default function SearchField({ setQuery }) {
-  const [playerName, setPlayerName] = useState("Leo");
+export default function SearchField({ params, setParams }) {
+  const [playerName, setPlayerName] = useState(params.name);
 
   const handleChange = (event) => {
     setPlayerName(event.target.value);
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (e.target[0].value === "") return;
-    setQuery(e.target[0].value);
+    const newParams = { name: playerName, page: 1 };
+    setParams(newParams);
   };
 
   return (
